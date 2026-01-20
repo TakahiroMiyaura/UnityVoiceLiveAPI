@@ -1,0 +1,3 @@
+[submodule "VoiceLiveAPI-Libs/VoiceLiveAPI"]
+	path = VoiceLiveAPI-Libs/VoiceLiveAPI
+	url = https://github.com/TakahiroMiyaura/VoiceLiveAPISamples.git

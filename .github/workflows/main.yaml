@@ -1,0 +1,74 @@
+name: Update-UPM-Branch
+
+on:
+  push:
+    tags:
+      - v*
+
+env:
+  MAIN_BRANCH: main
+  UPM_BRANCH: upm
+  PKG_ROOT_DIR: Unity/UnityVoiceLiveAPI/Assets/Reseul/UnityVoiceLiveAPI
+  SAMPLES_DIR: Samples
+  DOC_FILES: CHANGELOG.md CHANGELOG_JP.md README.md README_JP.md LICENSE THIRD-PARTY-NOTICES.md
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # 最新を取得
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: git checkout main
+
+      # イベントを起動したタグを steps.tag.outputs.name に格納
+      - name: Tag name
+        id: tag
+        run: echo ::set-output name=name::${GITHUB_REF#refs/tags/v}
+
+      # Git の設定
+      - name: Git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      # UPM 用のブランチを作成
+      - name: Create UPM branches
+        run: |
+          # 既存の UPM ブランチから meta ファイルを退避
+          mkdir -p /tmp/meta_backup
+          for file in $DOC_FILES; do
+            git show origin/$UPM_BRANCH:${file}.meta > /tmp/meta_backup/${file}.meta 2>/dev/null || echo "${file}.meta not found in remote $UPM_BRANCH"
+          done
+
+          git branch -D $UPM_BRANCH &> /dev/null || echo $UPM_BRANCH branch is not found
+          git subtree split -P "$PKG_ROOT_DIR" -b $UPM_BRANCH
+          git checkout $UPM_BRANCH
+
+          # ドキュメントファイルをコピーし、meta ファイルを生成または復元
+          for file in $DOC_FILES; do
+            git checkout $MAIN_BRANCH $file &> /dev/null || echo $file is not found
+            if [ -f "/tmp/meta_backup/${file}.meta" ] && [ -s "/tmp/meta_backup/${file}.meta" ]; then
+              # 既存の meta ファイルを復元
+              cp /tmp/meta_backup/${file}.meta ${file}.meta
+              echo "Restored existing ${file}.meta"
+            else
+              # 新しい meta ファイルを生成（ランダム GUID）
+              GUID=$(cat /proc/sys/kernel/random/uuid | tr -d '-')
+              printf 'fileFormatVersion: 2\nguid: %s\nDefaultImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n' "${GUID}" > ${file}.meta
+              echo "Generated new ${file}.meta with GUID: ${GUID}"
+            fi
+          done
+
+          git mv $SAMPLES_DIR Samples~ &> /dev/null || echo $SAMPLES_DIR is not found
+          rm Samples.meta
+          sed -i -e "s/\"version\":.*$/\"version\": \"$TAG\",/" package.json || echo package.json is not found
+          git add *.meta
+          git commit -am "release $TAG."
+          git push -f origin $UPM_BRANCH
+          git checkout -b $UPM_BRANCH@$TAG
+          git push -f origin $UPM_BRANCH@$TAG
+        env:
+          TAG: ${{ steps.tag.outputs.name }}

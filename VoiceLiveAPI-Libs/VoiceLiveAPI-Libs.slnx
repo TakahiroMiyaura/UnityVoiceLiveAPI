@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="VoiceLiveAPI.Unity/VoiceLiveAPI.Unity.csproj" />
+  <Project Path="VoiceLiveAPI/src/VoiceLiveAPI.Core/VoiceLiveAPI.Core.csproj" />
+</Solution>
