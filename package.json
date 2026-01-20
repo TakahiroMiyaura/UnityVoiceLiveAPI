@@ -5,8 +5,8 @@
   "description": "Unity integration for Azure AI VoiceLive API. Provides real-time audio communication with AI models and agents, including support for avatar video streaming via WebRTC.",
   "unity": "6000.0",
   "unityRelease": "63f1",
-  "documentationUrl": "https://github.com/TakahiroMiyaura/VoiceLiveAPI-Unity-Local",
-  "changelogUrl": "https://github.com/TakahiroMiyaura/VoiceLiveAPI-Unity-Local/blob/main/CHANGELOG.md",
+  "documentationUrl": "https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI",
+  "changelogUrl": "https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/blob/main/CHANGELOG.md",
   "licensesUrl": "https://opensource.org/license/bsl-1-0",
   "dependencies": {
     "com.unity.nuget.newtonsoft-json": "3.2.1",
@@ -22,7 +22,7 @@
     "avatar"
   ],
   "author": {
-    "name": "Takahiro Miyaura",
+    "name": "Reseul",
     "url": "https://github.com/TakahiroMiyaura"
   },
   "type": "library",
