@@ -1,6 +1,6 @@
 {
   "name": "com.reseul.azure.ai.voiceliveapi.unity",
-  "version": "1.0.0",
+  "version": "1.0.0-pre.2",
   "displayName": "VoiceLive API for Unity",
   "description": "Unity integration for Azure AI VoiceLive API. Provides real-time audio communication with AI models and agents, including support for avatar video streaming via WebRTC.",
   "unity": "6000.0",
