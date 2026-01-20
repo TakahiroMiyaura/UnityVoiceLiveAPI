@@ -9,7 +9,7 @@
 
 ## [Unreleased]
 
-## [1.0.0] - 2026-01-20
+## [1.0.0-pre.2] - 2026-01-20
 
 ### Added
 
@@ -61,5 +61,5 @@
 - **MINOR**: 後方互換性のある機能追加
 - **PATCH**: 後方互換性のあるバグ修正
 
-[Unreleased]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/releases/tag/v1.0.0
+[Unreleased]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/compare/v1.0.0-pre.2...HEAD
+[1.0.0-pre.2]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/releases/tag/v1.0.0-pre.2
