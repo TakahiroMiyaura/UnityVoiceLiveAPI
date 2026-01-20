@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d4c92687847a940b6bdee2db950069, type: 3}
+  m_Name: VoiceLiveSettings_Avatar
+  m_EditorClassIdentifier: 
+  connectionMode: 0
+  model: gpt-4o-mini
+  instructions: "\u3042\u306A\u305F\u306F\u89AA\u5207\u306AAI\u30A2\u30B7\u30B9\u30BF\u30F3\u30C8\u3067\u3059\u3002\n\u691C\u8A3C\u306E\u305F\u3081\u306B\u6700\u521D\u306B\u5FC5\u305A\u3042\u306A\u305F\u306E\u540D\u524D\u300Cmasako\u300D\u3092\u540D\u4E57\u3063\u3066\u304F\u3060\u3055\u3044\u3002"
+  voice:
+    language: ja-JP
+    voiceName: ja-JP-Nanami:DragonHDLatestNeural
+    voiceType: azure-standard
+    temperature: 0.8
+    style: 
+    pitch: 
+    rate: 
+    volume: 
+  audioProcessing:
+    sampleRate: 24000
+    inputAudioFormat: pcm16
+    outputAudioFormat: pcm16
+    noiseReduction: azure_deep_noise_suppression
+    enableEchoCancellation: 0
+  turnDetection:
+    type: server_vad
+    threshold: 0.5
+    silenceDurationMs: 500
+    prefixPaddingMs: 300
+    createResponse: 1
+    interruptResponse: 1
+    removeFillerWords: 0
+  avatarSettings: {fileID: 11400000, guid: 63b39e7aa5884594b8505ba3876d750b, type: 2}
+  animation:
+    enableVisemeId: 1
+    enableBlendShapes: 0

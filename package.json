@@ -1,0 +1,46 @@
+{
+  "name": "com.reseul.azure.ai.voiceliveapi.unity",
+  "version": "1.0.0",
+  "displayName": "VoiceLive API for Unity",
+  "description": "Unity integration for Azure AI VoiceLive API. Provides real-time audio communication with AI models and agents, including support for avatar video streaming via WebRTC.",
+  "unity": "6000.0",
+  "unityRelease": "63f1",
+  "documentationUrl": "https://github.com/TakahiroMiyaura/VoiceLiveAPI-Unity-Local",
+  "changelogUrl": "https://github.com/TakahiroMiyaura/VoiceLiveAPI-Unity-Local/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://opensource.org/license/bsl-1-0",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.1",
+    "com.unity.webrtc": "3.0.0"
+  },
+  "keywords": [
+    "Foundry",
+    "ai",
+    "voice",
+    "realtime",
+    "audio",
+    "webrtc",
+    "avatar"
+  ],
+  "author": {
+    "name": "Takahiro Miyaura",
+    "url": "https://github.com/TakahiroMiyaura"
+  },
+  "type": "library",
+  "samples": [
+    {
+      "displayName": "Avatar Sample",
+      "description": "Voice conversation sample with avatar video streaming via WebRTC.",
+      "path": "Samples~/AvatarSample"
+    },
+    {
+      "displayName": "Basic Voice Chat Sample",
+      "description": "Simple voice chat sample demonstrating basic UnityVoiceLiveClient usage without avatar features.",
+      "path": "Samples~/BasicVoiceChatSample"
+    },
+    {
+      "displayName": "Text Input Sample",
+      "description": "Text-based conversation sample with optional voice input support.",
+      "path": "Samples~/TextInputSample"
+    }
+  ]
+}
