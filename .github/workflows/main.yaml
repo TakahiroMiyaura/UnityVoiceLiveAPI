@@ -13,7 +13,7 @@ env:
   DOC_FILES: CHANGELOG.md CHANGELOG_JP.md README.md README_JP.md LICENSE THIRD-PARTY-NOTICES.md
 
 jobs:
-  test:
+  create-upm-branch:
     runs-on: ubuntu-latest
     steps:
       # 最新を取得

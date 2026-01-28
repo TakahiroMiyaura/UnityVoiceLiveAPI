@@ -9,6 +9,11 @@
 
 ## [Unreleased]
 
+## [1.0.0-pre.3] - 2026-01-28
+
+- パッケージサンプルの整理
+- 共通構造体のRefabの実装
+
 ## [1.0.0-pre.2] - 2026-01-20
 
 ### Added
@@ -61,5 +66,6 @@
 - **MINOR**: 後方互換性のある機能追加
 - **PATCH**: 後方互換性のあるバグ修正
 
-[Unreleased]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/compare/v1.0.0-pre.2...HEAD
+[Unreleased]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/compare/v1.0.0-pre.3...HEAD
+[1.0.0-pre.3]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/releases/tag/v1.0.0-pre.3
 [1.0.0-pre.2]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/releases/tag/v1.0.0-pre.2

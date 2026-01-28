@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &567060768801489892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3614721605304815184}
+  - component: {fileID: 7915603315842785699}
+  - component: {fileID: 4801133026431041510}
+  m_Layer: 0
+  m_Name: VoiceLiveAPI(Avatar)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3614721605304815184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567060768801489892}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7915603315842785699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567060768801489892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b67e8d6167bfa439d2746e6a880b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectionSettings: {fileID: 11400000, guid: 40d5cad76a5984246a455db2ed49f54f, type: 2}
+  sessionSettings: {fileID: 11400000, guid: 9d329d48110e7724b983bb12d4574540, type: 2}
+  audioSource: {fileID: 0}
+  autoStartRecording: 0
+  avatarClient: {fileID: 4801133026431041510}
+  logLevel: 4
+  OnTranscriptReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResponseOutputItemDoneReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  OnErrorOccurred:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSessionStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSessionEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnConnected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDisconnected:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4801133026431041510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567060768801489892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1564618ee778d4c4ab185c105d1eeff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoDisplay: {fileID: 0}
+  audioSource: {fileID: 0}
+  enableDebugLogging: 0
+  OnConnectionEstablished:
+    m_PersistentCalls:
+      m_Calls: []
+  OnConnectionClosed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnError:
+    m_PersistentCalls:
+      m_Calls: []
+  OnVideoFrameReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAudioFrameReceived:
+    m_PersistentCalls:
+      m_Calls: []

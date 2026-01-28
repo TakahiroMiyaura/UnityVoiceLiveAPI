@@ -515,56 +515,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &187178335
+--- !u!1 &187178335 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 567060768801489892, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+  m_PrefabInstance: {fileID: 5365559214391946179}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 187178339}
-  - component: {fileID: 187178338}
-  - component: {fileID: 187178340}
-  - component: {fileID: 187178336}
-  m_Layer: 0
-  m_Name: VoiceLiveAPI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &187178336
+--- !u!114 &187178340 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7915603315842785699, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+  m_PrefabInstance: {fileID: 5365559214391946179}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187178335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1564618ee778d4c4ab185c105d1eeff2, type: 3}
+  m_Script: {fileID: 11500000, guid: c6b67e8d6167bfa439d2746e6a880b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoDisplay: {fileID: 221370501}
-  audioSource: {fileID: 125394753}
-  enableDebugLogging: 0
-  OnConnectionEstablished:
-    m_PersistentCalls:
-      m_Calls: []
-  OnConnectionClosed:
-    m_PersistentCalls:
-      m_Calls: []
-  OnError:
-    m_PersistentCalls:
-      m_Calls: []
-  OnVideoFrameReceived:
-    m_PersistentCalls:
-      m_Calls: []
-  OnAudioFrameReceived:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &187178338
+--- !u!114 &187178341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -577,60 +544,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageArea: {fileID: 665845574}
---- !u!4 &187178339
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187178335}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &187178340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187178335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6b67e8d6167bfa439d2746e6a880b69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  connectionSettings: {fileID: 11400000, guid: dce1e42bdc940d64d95da6df84504308, type: 2}
-  sessionSettings: {fileID: 11400000, guid: 43323ecbed4b7e643ad202674b701d57, type: 2}
-  audioSource: {fileID: 200030948}
-  autoStartRecording: 0
-  avatarClient: {fileID: 187178336}
-  logLevel: 0
-  OnTranscriptReceived:
-    m_PersistentCalls:
-      m_Calls: []
-  OnResponseOutputItemDoneReceived:
-    m_PersistentCalls:
-      m_Calls: []
-  OnErrorOccurred:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSessionStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSessionEnded:
-    m_PersistentCalls:
-      m_Calls: []
-  OnConnected:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDisconnected:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &200030946
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,6 +2354,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010704593}
   m_CullTransparentMesh: 1
+--- !u!1001 &5365559214391946179
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 567060768801489892, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: m_Name
+      value: VoiceLiveAPI(Avatar)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000955606200246185, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: messageArea
+      value: 
+      objectReference: {fileID: 665845574}
+    - target: {fileID: 3614721605304815184, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614721605304815184, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614721605304815184, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614721605304815184, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614721605304815184, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614721605304815184, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614721605304815184, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614721605304815184, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614721605304815184, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614721605304815184, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801133026431041510, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 125394753}
+    - target: {fileID: 4801133026431041510, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: videoDisplay
+      value: 
+      objectReference: {fileID: 221370501}
+    - target: {fileID: 7915603315842785699, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 200030948}
+    - target: {fileID: 7915603315842785699, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: sessionSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 43323ecbed4b7e643ad202674b701d57, type: 2}
+    - target: {fileID: 7915603315842785699, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: connectionSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: dce1e42bdc940d64d95da6df84504308, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 567060768801489892, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 187178341}
+  m_SourcePrefab: {fileID: 100100000, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2448,6 +2445,6 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 187178339}
+  - {fileID: 5365559214391946179}
   - {fileID: 1532898708}
   - {fileID: 872829732}
