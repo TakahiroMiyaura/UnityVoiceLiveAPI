@@ -8,7 +8,7 @@ on:
 env:
   MAIN_BRANCH: main
   UPM_BRANCH: upm
-  PKG_ROOT_DIR: Unity/UnityVoiceLiveAPI/Assets/Reseul/UnityVoiceLiveAPI
+  PKG_ROOT_DIR: Unity/UnityVoiceLiveAPI/Assets/Reseul/VoiceLiveAPIForUnity
   SAMPLES_DIR: Samples
   DOC_FILES: CHANGELOG.md CHANGELOG_JP.md README.md README_JP.md LICENSE THIRD-PARTY-NOTICES.md
 
