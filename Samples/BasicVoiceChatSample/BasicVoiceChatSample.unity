@@ -2186,6 +2186,18 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 924705332}
+    - target: {fileID: 4852740714765730842, guid: 8352261343cac73418a57dfcac4a8078, type: 3}
+      propertyPath: sessionSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 7eddf285cf48dc34b82f97cbcb7cdccd, type: 2}
+    - target: {fileID: 4852740714765730842, guid: 8352261343cac73418a57dfcac4a8078, type: 3}
+      propertyPath: connectionSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 6065d89087ebbf24eb82aa8b5aa39722, type: 2}
+    - target: {fileID: 4852740714765730842, guid: 8352261343cac73418a57dfcac4a8078, type: 3}
+      propertyPath: audioCaptureSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: a213a36d9577b004cbfe94aa526afeee, type: 2}
     - target: {fileID: 6466298257769654046, guid: 8352261343cac73418a57dfcac4a8078, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -75,6 +75,14 @@ WebRTCを使用したリアルタイムビデオ・オーディオストリー�
 | Video Settings | 解像度とフォーマットオプション |
 | Background Settings | アバター背景の設定 |
 
+#### Audio Capture Settings（オプション）
+
+マイクデバイスを指定する場合：
+
+1. **Assets > Create > VoiceLive API > Audio Capture > Unity Microphone** で作成
+2. **Device Name** に対象デバイスを設定（空白でデフォルトデバイス）
+3. **Audio Capture Settings** フィールドに割り当て
+
 ## 使い方
 
 1. Microsoft Foundry 接続設定を構成
