@@ -1,4 +1,4 @@
-# Changelog
+jjjjjj# Changelog
 
 
 [![日本語](https://img.shields.io/badge/lang-日本語-red.svg)](CHANGELOG_JP.md)
@@ -9,6 +9,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+
+## [1.0.0-pre.4] - 2026-02-10
+
+### Added
+
+- **Audio Capture System Refactoring**
+  - `IAudioConverter`: Audio format conversion interface for flexible format support
+  - `PCM16Converter`: Default PCM16 format converter for Azure AI VoiceLive API
+  - `IAudioCapture`: Audio capture abstraction interface for device independence
+  - `AudioCaptureBase`: Abstract base class with common buffering and conversion logic
+  - `AudioCaptureSjettings`: ScriptableObject base class for Inspector configuration
+  - `UnityAudioCaptureSettings`: Unity Microphone settings asset (Create menu: VoiceLive API > Audio Capture > Unity Microphone)
+
+- **UnityVoiceLiveClient Enhancements**
+  - Added `AudioCaptureSettings` field for Inspector-based audio capture configuration
+  - Added `AudioCapture` property for programmatic audio capture replacement
+  - Support for custom audio devices (XR headset microphones, external devices, etc.)
 
 ## [1.0.0-pre.3] - 2026-01-28
 
@@ -67,6 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **MINOR**: Backward-compatible feature additions
 - **PATCH**: Backward-compatible bug fixes
 
-[Unreleased]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/compare/v1.0.0-pre.3...HEAD
+[Unreleased]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/compare/v1.0.0-pre.4...HEAD
+[1.0.0-pre.4]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/releases/tag/v1.0.0-pre.4
 [1.0.0-pre.3]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/releases/tag/v1.0.0-pre.3
 [1.0.0-pre.2]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/releases/tag/v1.0.0-pre.2

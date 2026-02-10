@@ -2,18 +2,26 @@
 // Released under the Boost Software License 1.0
 // https://opensource.org/license/bsl-1-0
 
-using System;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.Audio
 {
     /// <summary>
-    ///     Unity microphone audio capture component.
-    ///     Captures microphone input and converts it to PCM16 format for Azure AI VoiceLive API.
+    ///     Unity microphone audio capture implementation.
+    ///     Captures microphone input using Unity's Microphone API.
     /// </summary>
-    public class UnityAudioCapture : IDisposable
+    public class UnityAudioCapture : AudioCaptureBase
     {
+        #region Private Fields
+
+        private AudioClip microphoneClip;
+        private string deviceName;
+        private int lastSamplePosition;
+        private readonly int lengthSec;
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -21,103 +29,19 @@ namespace Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.Audio
         /// </summary>
         /// <param name="sampleRate">The sample rate for audio capture (default: 24000 Hz for Azure AI).</param>
         /// <param name="lengthSec">The length of the recording buffer in seconds (default: 10 seconds).</param>
-        public UnityAudioCapture(int sampleRate = 24000, int lengthSec = 10)
+        /// <param name="converter">The audio converter to use (default: PCM16Converter).</param>
+        public UnityAudioCapture(int sampleRate = 24000, int lengthSec = 10, IAudioConverter converter = null)
+            : base(sampleRate, converter)
         {
-            SampleRate = sampleRate;
             this.lengthSec = lengthSec;
-            audioBuffer = new float[sampleRate];
         }
 
         #endregion
 
-        #region IDisposable Implementation
+        #region AudioCaptureBase Overrides
 
-        /// <summary>
-        ///     Releases all resources used by the UnityAudioCapture.
-        /// </summary>
-        public void Dispose()
-        {
-            StopCapture();
-
-            if (microphoneClip != null)
-            {
-                Object.Destroy(microphoneClip);
-                microphoneClip = null;
-            }
-        }
-
-        #endregion
-
-        #region Events
-
-        /// <summary>
-        ///     Fired when audio data is captured from the microphone.
-        /// </summary>
-        public event Action<byte[]> OnAudioDataCaptured;
-
-        #endregion
-
-        #region Private Methods
-
-        /// <summary>
-        ///     Converts float audio samples to PCM16 format.
-        /// </summary>
-        /// <param name="floatSamples">The float audio samples (-1.0 to 1.0).</param>
-        /// <param name="sampleCount">The number of samples to convert.</param>
-        /// <returns>The PCM16 audio data as byte array.</returns>
-        private byte[] ConvertToPCM16(float[] floatSamples, int sampleCount)
-        {
-            var pcm16Data = new byte[sampleCount * 2]; // 2 bytes per sample (16-bit)
-
-            for (var i = 0; i < sampleCount; i++)
-            {
-                // Clamp float to [-1.0, 1.0]
-                var sample = Mathf.Clamp(floatSamples[i], -1.0f, 1.0f);
-
-                // Convert to 16-bit signed integer
-                var pcm16Sample = (short)(sample * short.MaxValue);
-
-                // Write as little-endian bytes
-                pcm16Data[i * 2] = (byte)(pcm16Sample & 0xFF);
-                pcm16Data[i * 2 + 1] = (byte)((pcm16Sample >> 8) & 0xFF);
-            }
-
-            return pcm16Data;
-        }
-
-        #endregion
-
-        #region Private Fields
-
-        private AudioClip microphoneClip;
-        private string deviceName;
-        private int lastSamplePosition;
-        private float[] audioBuffer;
-        private readonly int lengthSec;
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        ///     Gets a value indicating whether audio capture is active.
-        /// </summary>
-        public bool IsCapturing { get; private set; }
-
-        /// <summary>
-        ///     Gets the sample rate of the captured audio.
-        /// </summary>
-        public int SampleRate { get; }
-
-        #endregion
-
-        #region Public Methods
-
-        /// <summary>
-        ///     Starts capturing audio from the microphone.
-        /// </summary>
-        /// <param name="deviceName">The name of the microphone device (null for default device).</param>
-        public void StartCapture(string deviceName = null)
+        /// <inheritdoc />
+        public override void StartCapture(string deviceName = null)
         {
             if (IsCapturing)
             {
@@ -151,12 +75,12 @@ namespace Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.Audio
 
             lastSamplePosition = 0;
             IsCapturing = true;
+
+            Debug.Log($"Started audio capture on device: {this.deviceName}");
         }
 
-        /// <summary>
-        ///     Stops capturing audio from the microphone.
-        /// </summary>
-        public void StopCapture()
+        /// <inheritdoc />
+        public override void StopCapture()
         {
             if (!IsCapturing)
             {
@@ -165,13 +89,12 @@ namespace Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.Audio
 
             Microphone.End(deviceName);
             IsCapturing = false;
+
+            Debug.Log($"Stopped audio capture on device: {deviceName}");
         }
 
-        /// <summary>
-        ///     Updates the audio capture and processes new audio data.
-        ///     Must be called regularly (e.g., from Unity's Update() method).
-        /// </summary>
-        public void Update()
+        /// <inheritdoc />
+        public override void Update()
         {
             if (!IsCapturing || microphoneClip == null)
             {
@@ -202,11 +125,8 @@ namespace Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.Audio
                 return;
             }
 
-            // Resize buffer if necessary
-            if (audioBuffer.Length < samplesAvailable)
-            {
-                audioBuffer = new float[samplesAvailable];
-            }
+            // Ensure buffer has sufficient capacity
+            EnsureBufferCapacity(samplesAvailable);
 
             // Get audio data
             if (!microphoneClip.GetData(audioBuffer, lastSamplePosition))
@@ -215,12 +135,27 @@ namespace Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.Audio
                 return;
             }
 
-            // Convert to PCM16 and invoke event
-            var pcm16Data = ConvertToPCM16(audioBuffer, samplesAvailable);
-            OnAudioDataCaptured?.Invoke(pcm16Data);
+            // Convert and raise event
+            ProcessAndRaiseAudioData(audioBuffer, samplesAvailable);
 
             lastSamplePosition = currentPosition;
         }
+
+        /// <inheritdoc />
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            if (disposing && microphoneClip != null)
+            {
+                Object.Destroy(microphoneClip);
+                microphoneClip = null;
+            }
+        }
+
+        #endregion
+
+        #region Public Methods
 
         /// <summary>
         ///     Gets the list of available microphone devices.
@@ -230,6 +165,11 @@ namespace Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.Audio
         {
             return Microphone.devices;
         }
+
+        /// <summary>
+        ///     Gets the currently selected device name.
+        /// </summary>
+        public string CurrentDeviceName => deviceName;
 
         #endregion
     }

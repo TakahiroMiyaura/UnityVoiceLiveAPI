@@ -45,6 +45,14 @@ Configure the `UnityVoiceLiveClient` component:
 3. Select **Connection Mode** (AIAgent or AIModel)
 4. Assign the **Audio Source** component for playback
 
+#### Audio Capture Settings (Optional)
+
+To specify a microphone device:
+
+1. Create **Assets > Create > VoiceLive API > Audio Capture > Unity Microphone**
+2. Set **Device Name** to the target device (leave empty for default)
+3. Assign to **Audio Capture Settings** field
+
 ## Usage
 
 1. Press **Connect** to establish connection

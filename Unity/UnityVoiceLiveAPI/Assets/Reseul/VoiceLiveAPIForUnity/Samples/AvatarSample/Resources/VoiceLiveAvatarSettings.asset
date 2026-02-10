@@ -18,11 +18,11 @@ MonoBehaviour:
     height: 1080
     bitRate: 2000000
     codec: h264
-    enableCrop: 1
-    cropTopLeftX: 560
+    enableCrop: 0
+    cropTopLeftX: 0
     cropTopLeftY: 0
-    cropBottomRightX: 1360
-    cropBottomRightY: 1080
+    cropBottomRightX: 0
+    cropBottomRightY: 0
   background:
-    color: '#FFFFFFFF'
+    color: '#00FF00FF'
     imageUrl: 

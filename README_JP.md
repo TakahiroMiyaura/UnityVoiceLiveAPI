@@ -62,6 +62,18 @@ https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI.git#upm@1.0.0
    - Access Token: API キーまたは Bearer トークン
    - Connection Mode: AIAgent または AIModel を選択
 
+### オーディオキャプチャ設定（オプション）
+
+特定のマイクデバイス（例：XR ヘッドセットのマイク）を使用する場合：
+
+1. オーディオキャプチャ設定アセットを作成:
+   - Project ウィンドウで右クリック
+   - **Create > VoiceLive API > Audio Capture > Unity Microphone** を選択
+2. Inspector でデバイス名などの設定を構成
+3. アセットを `UnityVoiceLiveClient` の **Audio Capture Settings** フィールドに割り当て
+
+設定しない場合は、デフォルトのシステムマイクが使用されます。
+
 ### コード例
 
 ```csharp

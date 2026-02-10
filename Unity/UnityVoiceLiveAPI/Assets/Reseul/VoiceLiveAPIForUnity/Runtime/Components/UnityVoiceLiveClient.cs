@@ -49,6 +49,10 @@ namespace Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.Components
         [SerializeField]
         private AudioSource audioSource;
 
+        [Tooltip("Audio capture settings ScriptableObject. If not assigned, default Unity Microphone will be used.")]
+        [SerializeField]
+        private AudioCaptureSettings audioCaptureSettings;
+
         [Tooltip("Automatically start recording on session start.")]
         [SerializeField]
         private bool autoStartRecording;
@@ -98,8 +102,9 @@ namespace Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.Components
         private VoiceLiveSession session;
         private ServerMessageHandlerManager messageHandler;
         private AvatarMessageHandlerManager avatarManager;
-        private UnityAudioCapture audioCapture;
+        private IAudioCapture audioCapture;
         private UnityAudioPlayback audioPlayback;
+        private bool ownsAudioCapture;
         private bool avatarInitialized;
         private bool avatarInitializationPending;
         private SessionInfo pendingAvatarSessionInfo;
@@ -157,6 +162,49 @@ namespace Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.Components
         /// </summary>
         public bool IsAvatarEnabled => avatarClient != null && sessionSettings?.HasAvatar == true;
 
+        /// <summary>
+        ///     Gets or sets the audio capture implementation.
+        ///     Set this property before calling Connect() to use a custom audio capture device.
+        ///     If not set, a default UnityAudioCapture will be created automatically.
+        /// </summary>
+        /// <remarks>
+        ///     When setting a custom audio capture, the client will not dispose it on destroy.
+        ///     The caller is responsible for disposing externally provided audio captures.
+        /// </remarks>
+        public IAudioCapture AudioCapture
+        {
+            get => audioCapture;
+            set
+            {
+                if (IsConnected)
+                {
+                    LogWarning("Cannot change AudioCapture while connected. Disconnect first.");
+                    return;
+                }
+
+                // Unsubscribe from old capture
+                if (audioCapture != null)
+                {
+                    audioCapture.OnAudioDataCaptured -= HandleAudioDataCaptured;
+
+                    // Dispose only if we own it
+                    if (ownsAudioCapture)
+                    {
+                        audioCapture.Dispose();
+                    }
+                }
+
+                audioCapture = value;
+                ownsAudioCapture = false; // External capture, don't dispose
+
+                // Subscribe to new capture
+                if (audioCapture != null)
+                {
+                    audioCapture.OnAudioDataCaptured += HandleAudioDataCaptured;
+                }
+            }
+        }
+
         #endregion
 
         #region Unity Lifecycle
@@ -188,7 +236,25 @@ namespace Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.Components
             var sampleRate = sessionSettings?.AudioProcessing?.SampleRate ?? 24000;
 
             // Initialize audio components
-            audioCapture = new UnityAudioCapture(sampleRate);
+            // Only create audio capture if not already set externally via AudioCapture property
+            if (audioCapture == null)
+            {
+                // Use AudioCaptureSettings if assigned, otherwise create default UnityAudioCapture
+                if (audioCaptureSettings != null)
+                {
+                    audioCapture = audioCaptureSettings.CreateAudioCapture(sampleRate);
+                    Log($"Audio capture created from settings: {audioCaptureSettings.Description}");
+                }
+                else
+                {
+                    audioCapture = new UnityAudioCapture(sampleRate);
+                    Log("Audio capture created with default Unity Microphone");
+                }
+
+                ownsAudioCapture = true; // We created it, so we own it
+                audioCapture.OnAudioDataCaptured += HandleAudioDataCaptured;
+            }
+
             audioPlayback = new UnityAudioPlayback(audioSource);
 
             // Initialize message handlers (will be added to session after connection)
@@ -198,7 +264,6 @@ namespace Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.Components
 
             // Setup event handlers
             SetupMessageHandlers();
-            audioCapture.OnAudioDataCaptured += HandleAudioDataCaptured;
 
             Log("UnityVoiceLiveClient initialized");
         }
@@ -297,7 +362,12 @@ namespace Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.Components
                 LogError($"Cleanup error: {ex.Message}");
             }
 
-            audioCapture?.Dispose();
+            // Only dispose audio capture if we own it
+            if (ownsAudioCapture)
+            {
+                audioCapture?.Dispose();
+            }
+
             audioPlayback?.Dispose();
 
             Log("Cleanup completed");

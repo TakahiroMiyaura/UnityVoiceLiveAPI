@@ -62,6 +62,18 @@ https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI.git#upm@1.0.0
    - Access Token: API key or Bearer token
    - Connection Mode: Select AIAgent or AIModel
 
+### Audio Capture Settings (Optional)
+
+To use a specific microphone device (e.g., XR headset microphone):
+
+1. Create an audio capture settings asset:
+   - Right-click in Project window
+   - Select **Create > VoiceLive API > Audio Capture > Unity Microphone**
+2. Configure the device name and other settings in the Inspector
+3. Assign the asset to **Audio Capture Settings** field in `UnityVoiceLiveClient`
+
+If not configured, the default system microphone will be used.
+
 ### Code Example
 
 ```csharp

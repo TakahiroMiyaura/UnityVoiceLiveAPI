@@ -45,6 +45,14 @@
 3. **Connection Mode** を選択（AIAgent または AIModel）
 4. 再生用の **Audio Source** コンポーネントを割り当て
 
+#### オーディオキャプチャ設定（オプション）
+
+マイクデバイスを指定する場合:
+
+1. **Assets > Create > VoiceLive API > Audio Capture > Unity Microphone** で作成
+2. **Device Name** に対象デバイスを設定（空欄でデフォルト）
+3. **Audio Capture Settings** フィールドに割り当て
+
 ## 使い方
 
 1. **Connect** を押して接続を確立

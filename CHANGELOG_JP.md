@@ -9,6 +9,23 @@
 
 ## [Unreleased]
 
+## [1.0.0-pre.4] - 2026-02-10
+
+### Added
+
+- **オーディオキャプチャシステムのリファクタリング**
+  - `IAudioConverter`: 柔軟なフォーマット対応のための音声フォーマット変換インターフェース
+  - `PCM16Converter`: Azure AI VoiceLive API 用のデフォルト PCM16 フォーマットコンバーター
+  - `IAudioCapture`: デバイス非依存のための音声キャプチャ抽象化インターフェース
+  - `AudioCaptureBase`: バッファリングと変換の共通ロジックを持つ抽象基底クラス
+  - `AudioCaptureSettings`: Inspector 設定用の ScriptableObject 基底クラス
+  - `UnityAudioCaptureSettings`: Unity マイク設定アセット（作成メニュー: VoiceLive API > Audio Capture > Unity Microphone）
+
+- **UnityVoiceLiveClient の機能強化**
+  - Inspector からオーディオキャプチャを設定できる `AudioCaptureSettings` フィールドを追加
+  - プログラムからオーディオキャプチャを差し替え可能な `AudioCapture` プロパティを追加
+  - カスタム音声デバイス（XR ヘッドセットマイク、外部デバイス等）のサポート
+
 ## [1.0.0-pre.3] - 2026-01-28
 
 - パッケージサンプルの整理
@@ -66,6 +83,7 @@
 - **MINOR**: 後方互換性のある機能追加
 - **PATCH**: 後方互換性のあるバグ修正
 
-[Unreleased]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/compare/v1.0.0-pre.3...HEAD
+[Unreleased]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/compare/v1.0.0-pre.4...HEAD
+[1.0.0-pre.4]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/releases/tag/v1.0.0-pre.4
 [1.0.0-pre.3]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/releases/tag/v1.0.0-pre.3
 [1.0.0-pre.2]: https://github.com/TakahiroMiyaura/UnityVoiceLiveAPI/releases/tag/v1.0.0-pre.2

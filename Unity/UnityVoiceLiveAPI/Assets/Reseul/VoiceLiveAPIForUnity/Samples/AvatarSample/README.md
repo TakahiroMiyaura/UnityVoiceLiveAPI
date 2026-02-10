@@ -75,6 +75,14 @@ Create or use an existing `VoiceLiveAvatarSettings` asset:
 | Video Settings | Resolution and format options |
 | Background Settings | Avatar background configuration |
 
+#### Audio Capture Settings (Optional)
+
+To specify a microphone device:
+
+1. Create **Assets > Create > VoiceLive API > Audio Capture > Unity Microphone**
+2. Set **Device Name** to the target device (leave empty for default)
+3. Assign to **Audio Capture Settings** field
+
 ## Usage
 
 1. Configure the Microsoft Foundry connection settings

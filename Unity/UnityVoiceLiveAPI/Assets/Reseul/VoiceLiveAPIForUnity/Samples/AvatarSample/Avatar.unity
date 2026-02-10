@@ -2430,6 +2430,10 @@ PrefabInstance:
       propertyPath: connectionSettings
       value: 
       objectReference: {fileID: 11400000, guid: dce1e42bdc940d64d95da6df84504308, type: 2}
+    - target: {fileID: 7915603315842785699, guid: bcc30423a940dc9469c688aab1a4afda, type: 3}
+      propertyPath: audioCaptureSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: bf8681025c61bcb468166534b5fa14e7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
