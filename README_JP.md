@@ -131,14 +131,10 @@ Microsoft Foundry WebSocket API
 
 ## プラットフォームサポート
 
-| プラットフォーム | サポート状況 | 備考 |
+| Platform | Support | Notes |
 |:---|:---:|:---|
 | Windows (Standalone) | ✅ | |
-| macOS (Standalone) | ✅ | |
-| Linux (Standalone) | ✅ | |
 | Android | ✅ | マイク権限の設定が必要 |
-| iOS | ✅ | マイク権限の設定が必要 |
-| WebGL | ⚠️ | WebSocket サポートが必要（制限あり） |
 
 ## ドキュメント
 

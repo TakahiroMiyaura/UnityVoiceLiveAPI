@@ -129,16 +129,13 @@ VoiceLive API Core (.NET Standard 2.1)
 Microsoft Foundry WebSocket API
 ```
 
+
 ## Platform Support
 
 | Platform | Support | Notes |
 |:---|:---:|:---|
 | Windows (Standalone) | ✅ | |
-| macOS (Standalone) | ✅ | |
-| Linux (Standalone) | ✅ | |
 | Android | ✅ | Microphone permissions required |
-| iOS | ✅ | Microphone permissions required |
-| WebGL | ⚠️ | WebSocket support required (limited) |
 
 ## Documentation
 
