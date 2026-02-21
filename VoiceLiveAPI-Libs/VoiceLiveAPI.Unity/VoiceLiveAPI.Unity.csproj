@@ -644,7 +644,7 @@
     <ProjectReference Include="..\VoiceLiveAPI\src\VoiceLiveAPI.Core\VoiceLiveAPI.Core.csproj" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="dotnet publish -c $(Configuration) -o &quot;$(ProjectDir)$(OutDir)\publish&quot; --no-build&#xD;&#xA;pwsh &quot;$(ProjectDir)buildScripts\CopyPrecompiledRefs.ps1&quot; -AsmdefPath &quot;..\..\Unity\UnityVoiceLiveAPI\Assets\Reseul\UnityVoiceLiveAPI\Runtime\Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.asmdef&quot; -SourceDir &quot;$(ProjectDir)$(OutDir)\publish&quot; -DestinationDir &quot;..\..\Unity\UnityVoiceLiveAPI\Assets\Reseul\UnityVoiceLiveAPI\Runtime\Assmblies\$(TargetFramework)&quot;" />
+    <Exec Command="dotnet publish -c $(Configuration) -o &quot;$(ProjectDir)$(OutDir)\publish&quot; --no-build&#xD;&#xA;pwsh &quot;$(ProjectDir)buildScripts\CopyPrecompiledRefs.ps1&quot; -AsmdefPath &quot;..\..\Unity\UnityVoiceLiveAPI\Assets\Reseul\VoiceLiveAPIForUnity\Runtime\Com.Reseul.Azure.AI.VoiceLiveAPI.Unity.asmdef&quot; -SourceDir &quot;$(ProjectDir)$(OutDir)\publish&quot; -DestinationDir &quot;..\..\Unity\UnityVoiceLiveAPI\Assets\Reseul\VoiceLiveAPIForUnity\Runtime\Assmblies\$(TargetFramework)&quot;" />
   </Target>
 
 </Project>
